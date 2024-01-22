@@ -1,0 +1,65 @@
+Week 1-2 (Jan 22 - Feb 4)
+
+Project Planning and Research
+
+    Define the project scope and objectives.
+    Decide on the technologies and frameworks to use (e.g., JavaScript, React for front-end, Node.js and Express for back-end).
+    Research and plan the integration of OpenAI's chatbot for recipe generation.
+    Start designing the UI/UX, focusing on the blog layout, chatbot interface, and recipe saving features.
+
+Week 3-4 (Feb 5 - Feb 18)
+
+Initial Development Setup
+
+    Set up your development environment.
+    Initialize your project repository and define the project structure.
+    Create a basic front-end layout (static components for the blog and placeholder for the chatbot).
+    Set up a basic back-end server with Node.js and Express.
+
+Week 5-6 (Feb 19 - Mar 4)
+
+Blog and Database Integration
+
+    Develop the blog functionality with options to post, edit, and delete articles.
+    Set up a database (e.g., MongoDB, PostgreSQL) for storing blog posts and recipes.
+    Implement database CRUD operations in your back-end.
+
+Week 7-8 (Mar 5 - Mar 18)
+
+Chatbot Integration
+
+    Integrate OpenAI's chatbot into your project.
+    Ensure the chatbot can generate and display recipes.
+    Begin connecting the chatbot with your database for saving recipes.
+
+Week 9-10 (Mar 19 - Apr 1)
+
+Recipe Saving and Cookbook Features
+
+    Develop the functionality to save favorite recipes.
+    Create the cookbook page where saved recipes are listed and can be viewed.
+    Implement user interactions for saving and managing recipes.
+
+Week 11 (Apr 2 - Apr 8)
+
+User Testing and Feedback
+
+    Conduct basic user testing, focusing on functionality and user experience.
+    Gather feedback and identify any major issues or improvements needed.
+    Start making necessary adjustments based on feedback.
+
+Week 12 (Apr 9 - Apr 15)
+
+Final Polishing and Debugging
+
+    Address any remaining bugs or issues.
+    Improve UI/UX based on testing feedback.
+    Optimize performance and ensure mobile responsiveness if necessary.
+
+Week 13 (Apr 16 - Apr 22)
+
+Deployment and Launch
+
+    Prepare for deployment, set up hosting, and deploy your application.
+    Perform final testing in the live environment.
+    Officially launch your project and monitor for any immediate issues.
