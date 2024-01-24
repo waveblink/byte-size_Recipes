@@ -1,5 +1,8 @@
 import express, {response} from "express";
 import bodyParser from "body-parser";
+import dotenv from "dotenv";
+import pkg from 'pg';
+const { Pool } = pkg;
 
 
 const app = express();
@@ -9,6 +12,16 @@ app.set('view engine', 'ejs');
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
+
+import { name } from "ejs";
+
+const pool = new Pool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  port: 5432
+}); 
 
 
 app.get("/", (req,res) =>{
@@ -28,18 +41,29 @@ app.get("/submitted", (req, res) => {
     res.render("submitted");
 });
 
-app.post("/cookbook", (req, res) => {
+app.post("/cookbook", async (req, res) => {
     const newRecipe = {
         name: req.body.name,
         cuisine: req.body.cuisine,
         meal: req.body.meal,
-        recipe: req.body.recipe
+        ingredients: req.body.ingredients,
+        instructions: req.body.instructions
     };
 
-    recipes.push(newRecipe);
+    try {
+        const queryText = 'INSERT INTO recipes(cuisine, mealType, ingredients, instructions, name) VALUES($1, $2, $3, $4, $5)';
+        const values = [newRecipe.cuisine, newRecipe.meal, newRecipe.ingredients, newRecipe.instructions, newRecipe.name];
+        await pool.query(queryText, values);
 
-    res.render("submitted", {newRecipe});
+        // Add the new recipe to the in-memory array
+        recipes.push(newRecipe);
 
+        // Render the success page with the newly added recipe
+        res.render("submitted", { newRecipe });
+    } catch (err) {
+        console.error(err);
+        res.render("error", { message: "Error adding recipe to the cookbook." });
+    }
 });
 
 
