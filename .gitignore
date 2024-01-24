@@ -1,2 +1,6 @@
 .env
-.gitignore
+node_modules/
+*.log
+.DS_Store
+*.tmp
+*.temp
