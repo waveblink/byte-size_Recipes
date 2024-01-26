@@ -1,14 +1,15 @@
-<%- include("partials/header.ejs") %>cd
+<%- include("partials/header.ejs") %>
 
 <h2>Recent Recipes</h2>
 
 <ul>
     <% recipes.forEach(function(recipe) { %>
         <li>
-            <h3><%- recipe.name %></h3>
+            <h2><%- recipe.name %></h2>
             <p>Cuisine: <%- recipe.cuisine %></p>
-            <p>Meal: <%- recipe.meal %></p>
-            <p>Recipe: <%- recipe.recipe %></p>
+            <p>Meal: <%- recipe.mealType %></p>
+            <p>Ingredients: <%- recipe.ingredients %></p>
+            <p>instructions: <%- recipe.instructions %></p>>
         </li>
     <% }); %>
 </ul><%- include("partials/footer.ejs") %>

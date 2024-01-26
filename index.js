@@ -28,7 +28,8 @@ const pool = new Pool({
 
 
 app.get("/", (req,res) =>{
-    res.render("index");
+    getRecipes();
+    res.render("index", {recipes: recipes});
 });
 app.get("/recent", (req,res) => {
     res.render("recent.ejs", {recipes: recipes});
@@ -70,6 +71,15 @@ app.post("/cookbook", async (req, res) => {
     }
 });
 
+async function getRecipes() {
+    try {
+      const result = await pool.query("SELECT * FROM recipe_book");
+      return result.rows;
+    } catch (err) {
+      console.error("Error fetching users:", err);
+      return [];
+    }
+  }
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
