@@ -15,6 +15,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 import { name } from "ejs";
 
+dotenv.config();
+
+
 const pool = new Pool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -45,16 +48,17 @@ app.post("/cookbook", async (req, res) => {
     const newRecipe = {
         name: req.body.name,
         cuisine: req.body.cuisine,
-        meal: req.body.meal,
+        mealType: req.body.mealType,
         ingredients: req.body.ingredients,
         instructions: req.body.instructions
     };
 
     try {
-        const queryText = 'INSERT INTO recipes(cuisine, mealType, ingredients, instructions, name) VALUES($1, $2, $3, $4, $5)';
-        const values = [newRecipe.cuisine, newRecipe.meal, newRecipe.ingredients, newRecipe.instructions, newRecipe.name];
-        await pool.query(queryText, values);
-
+        const result = await pool.query(
+            "INSERT INTO recipe_book (name, cuisine, mealType, ingredients, instructions) VALUES ($1, $2, $3, $4, $5)",
+            [newRecipe.name, newRecipe.cuisine, newRecipe.meal, newRecipe.ingredients, newRecipe.instructions]
+          );
+            
         // Add the new recipe to the in-memory array
         recipes.push(newRecipe);
 
